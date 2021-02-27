@@ -82,81 +82,6 @@ df[countrycode]=pd.DataFrame({countrycode:df1.values})
 size = int(len(df) * 0.80)
 train, test = df[0:size], df[size:len(df)]
 
-
-# def adf_test(timeseries):
-#     #Perform Dickey-Fuller test:
-#     # print ('Results of Dickey-Fuller Test:')
-#     dftest = adfuller(timeseries, autolag='AIC')
-#     dfoutput = pd.Series(dftest[0:4], index=['Test Statistic','p-value','#Lags Used','Number of Observations Used'])
-#     for key,value in dftest[4].items():
-#         dfoutput['Critical Value (%s)'%key] = value
-    # print (dfoutput)
-# print(adf_test(train))
-
-
-
-###########PLOT##########
-# count=1
-# x = np.arange(0, 26280)
-# newcountrycode = 'EE', 'PT', 'ES', 'FR', 'FI', 'HU', 'SI', 'LV', 'NL', 'GR', 'BE', 'TR'
-# countriesnames = 'Estonia', 'Portugal', 'Spain', 'France', 'Finland', 'Hungary', 'Slovenia', 'Latvia', 'Netherlands', 'Greece', 'Belgium', 'Turkey'
-# plt.figure(figsize = (15, 10), constrained_layout=True)
-# for iteration3 in range(len(df.columns)):
-#     plt.subplot(4, 4, count)
-#     plt.plot(x, df[newcountrycode[iteration3]])
-#     plt.title(countriesnames[iteration3], fontsize=12)
-#     plt.xlabel('Hours', fontsize=10)
-#     plt.ylabel('Forecasted Prices', fontsize=10)
-#     count=count+1
-# plt.tight_layout
-# plt.savefig('plot1.png', dpi=1200)
-# plt.savefig('plot1.eps', dpi=1200)
-# plt.show()
-
-# x = np.arange(0, 26280)
-# newcountrycode = 'EE', 'PT', 'ES', 'FR', 'FI', 'HU', 'SI', 'LV', 'NL', 'GR', 'BE', 'TR'
-# countriesnames = 'Estonia', 'Portugal', 'Spain', 'France', 'Finland', 'Hungary', 'Slovenia', 'Latvia', 'Netherlands', 'Greece', 'Belgium', 'Turkey'
-# fig, ax = plt.subplots(3, 4, figsize=(25,15))
-# iter1=0
-# for iteration4 in range(3):
-#     for iteration5 in range(4):
-#         ax[iteration4, iteration5].plot(x, df[newcountrycode[iter1]], 'C1', linewidth=1)
-#         ax[iteration4, iteration5].set_title(countriesnames[iter1], fontsize=20)
-#         ax[iteration4, iteration5].set_xlabel('Hours', fontsize=12)
-#         ax[iteration4, iteration5].set_ylabel('Forecasted Prices', fontsize=12)
-#         iter1=iter1+1
-# fig.tight_layout()
-# plt.savefig('plot1.png', dpi=1200)
-# plt.savefig('plot1.eps', dpi=1200)
-# plt.show()
-
-###########PLOT##########
-#####PACF-PLOT######
-# newcountrycode = 'EE', 'PT', 'ES', 'FR', 'FI', 'HU', 'SI', 'LV', 'NL', 'GR', 'BE', 'TR'
-# countriesnames = 'Estonia', 'Portugal', 'Spain', 'France', 'Finland', 'Hungary', 'Slovenia', 'Latvia', 'Netherlands', 'Greece', 'Belgium', 'Turkey'
-# fig, ax = plt.subplots(3, 4, figsize=(25,15))
-# iteration3=0
-# for iteration4 in range(3):
-#     for iteration5 in range(4):
-#         sm.graphics.tsa.plot_pacf(df[newcountrycode[iteration3]].squeeze(), lags=40, ax=ax[iteration4, iteration5])
-#         ax[iteration4, iteration5].set_title('PACF: '+countriesnames[iteration3], fontsize=20)
-#         iteration3=iteration3+1
-# fig.tight_layout()
-# # plt.savefig('PACF.png', dpi=1200)
-# plt.savefig('PACF.eps', dpi=1200)
-# plt.show()
-# #####ACF-PLOT######
-# fig, ax = plt.subplots(3, 4, figsize=(25,15))
-# iteration3=0
-# for iteration4 in range(3):
-#     for iteration5 in range(4):
-#         sm.graphics.tsa.plot_acf(df[newcountrycode[iteration3]].squeeze(), lags=40, ax=ax[iteration4, iteration5])
-#         ax[iteration4, iteration5].set_title('ACF: '+countriesnames[iteration3], fontsize=20)
-#         iteration3=iteration3+1
-# fig.tight_layout()
-# # plt.savefig('ACF.png', dpi=1200)
-# plt.savefig('ACF.eps', dpi=1200)
-# plt.show()
 ##########PLOT#########
 #%%################ARIMA####################
 TahminARIMA = pd.DataFrame(columns=df.columns).fillna(0)
@@ -206,8 +131,7 @@ for iterationnew in range(len(newcountrycode)):
         iteration4 = iteration4 + 1
         iteration5 = 0
 fig.tight_layout()
-plt.savefig('ARIMA.png', dpi=1200)
-plt.savefig('ARIMA.eps', dpi=1200)
+plt.savefig('ARIMA.png')
 plt.show()
 
 
